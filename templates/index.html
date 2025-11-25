@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lead Contact Bot - Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>🤖 Lead Contact Bot</h1>
+        <p>Find businesses without online presence - Your next clients</p>
+      </header>
+
+      <!-- Stats Dashboard -->
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+          <div class="stat-number" id="totalLeads">0</div>
+          <div class="stat-label">Total Leads</div>
+        </div>
+        <div class="stat-card highlight">
+          <div class="stat-number" id="noWebsiteLeads">0</div>
+          <div class="stat-label">No Website</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="withWebsiteLeads">0</div>
+          <div class="stat-label">Has Website</div>
+        </div>
+      </div>
+
+      <!-- Scraping Form -->
+      <div class="card">
+        <h2>🔍 Start New Search</h2>
+        <form id="scrapingForm">
+          <div class="form-group">
+            <label for="niche">Business Niche/Category</label>
+            <input
+              type="text"
+              id="niche"
+              placeholder="e.g., restaurantes, fontaneros, talleres"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                placeholder="España"
+                value="España"
+              />
+            </div>
+            <div class="form-group">
+              <label for="maxPages">Pages to Scrape</label>
+              <input type="number" id="maxPages" min="1" max="10" value="3" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="startBtn">
+            <span>Start Scraping</span>
+          </button>
+        </form>
+
+        <!-- Progress Bar -->
+        <div
+          id="progressContainer"
+          class="progress-container"
+          style="display: none"
+        >
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text" id="progressText">Initializing...</div>
+        </div>
+      </div>
+
+      <!-- Filters and Actions -->
+      <div class="filters-section">
+        <div class="filter-group">
+          <label for="filterType">Filter:</label>
+          <select id="filterType">
+            <option value="all">All Leads</option>
+            <option value="no_website">No Website Only</option>
+            <option value="has_website">Has Website</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by name or category..."
+          />
+        </div>
+        <div class="action-buttons">
+          <button class="btn btn-secondary" onclick="exportLeads()">
+            📥 Export JSON
+          </button>
+          <button class="btn btn-danger" onclick="clearAllLeads()">
+            🗑️ Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- Results Table -->
+      <div class="card">
+        <h2>📊 Results</h2>
+        <div class="table-container">
+          <table id="leadsTable">
+            <thead>
+              <tr>
+                <th>Business Name</th>
+                <th>Category</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Website</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody">
+              <tr>
+                <td colspan="6" class="empty-state">
+                  No leads yet. Start a search to find businesses!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

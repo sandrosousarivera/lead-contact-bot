@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  lead-bot:
+    build: .
+    container_name: lead-contact-bot
+    ports:
+      - "5000:5000"
+    volumes:
+      # Persist database
+      - ./leads.db:/app/leads.db
+      # Persist exports
+      - ./exports:/app/exports
+    environment:
+      - FLASK_ENV=production
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
+    restart: unless-stopped
