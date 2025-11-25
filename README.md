@@ -19,18 +19,21 @@ Lead Contact Bot is a Python-based web scraping tool with a modern React + Tailw
 ## Tech Stack
 
 **Frontend:**
+
 - React 18
 - Tailwind CSS
 - Axios
 - Vite
 
 **Backend:**
+
 - Flask
 - SQLite
 - Selenium
 - BeautifulSoup4
 
 **DevOps:**
+
 - Docker
 - Docker Compose
 
@@ -76,6 +79,7 @@ Lead Contact Bot is a Python-based web scraping tool with a modern React + Tailw
 ## Development Setup (Without Docker)
 
 ### Prerequisites
+
 - Python 3.11+
 - Node.js 18+
 - Google Chrome installed
@@ -83,12 +87,14 @@ Lead Contact Bot is a Python-based web scraping tool with a modern React + Tailw
 ### Backend Setup
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/sandrosousarivera/lead-contact-bot.git
    cd lead-contact-bot
    ```
 
 2. Create virtual environment:
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -102,11 +108,13 @@ Lead Contact Bot is a Python-based web scraping tool with a modern React + Tailw
 ### Frontend Setup
 
 1. Navigate to frontend directory:
+
    ```bash
    cd frontend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -119,11 +127,13 @@ Lead Contact Bot is a Python-based web scraping tool with a modern React + Tailw
 ### Running the Application
 
 1. In the project root, run Flask:
+
    ```bash
    python app.py
    ```
 
 2. In another terminal, run React development server (optional):
+
    ```bash
    cd frontend
    npm run dev
@@ -214,6 +224,7 @@ docker-compose up -d --build
 ## Development Commands
 
 ### Backend
+
 ```bash
 # Run Flask development server
 python app.py
@@ -223,6 +234,7 @@ python scraper.py
 ```
 
 ### Frontend
+
 ```bash
 # Install dependencies
 npm install

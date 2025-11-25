@@ -1,23 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 export default function SearchForm({ onSubmit, isLoading, progress, message }) {
-  const [niche, setNiche] = useState('')
-  const [location, setLocation] = useState('España')
-  const [maxPages, setMaxPages] = useState(3)
+  const [niche, setNiche] = useState("");
+  const [location, setLocation] = useState("España");
+  const [maxPages, setMaxPages] = useState(3);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!niche.trim()) {
-      alert('Please enter a niche')
-      return
+      alert("Please enter a niche");
+      return;
     }
-    onSubmit({ niche, location, max_pages: maxPages })
-  }
+    onSubmit({ niche, location, max_pages: maxPages });
+  };
 
   return (
     <div className="card">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">🔍 Start New Search</h2>
-      
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        🔍 Start New Search
+      </h2>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -53,7 +55,11 @@ export default function SearchForm({ onSubmit, isLoading, progress, message }) {
             <input
               type="number"
               value={maxPages}
-              onChange={(e) => setMaxPages(Math.min(10, Math.max(1, parseInt(e.target.value) || 1)))}
+              onChange={(e) =>
+                setMaxPages(
+                  Math.min(10, Math.max(1, parseInt(e.target.value) || 1))
+                )
+              }
               min="1"
               max="10"
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500"
@@ -65,9 +71,11 @@ export default function SearchForm({ onSubmit, isLoading, progress, message }) {
         <button
           type="submit"
           disabled={isLoading}
-          className={`btn btn-primary w-full ${isLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
+          className={`btn btn-primary w-full ${
+            isLoading ? "opacity-60 cursor-not-allowed" : ""
+          }`}
         >
-          {isLoading ? '⏳ Scraping...' : '🚀 Start Scraping'}
+          {isLoading ? "⏳ Scraping..." : "🚀 Start Scraping"}
         </button>
       </form>
 
@@ -83,5 +91,5 @@ export default function SearchForm({ onSubmit, isLoading, progress, message }) {
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -14,5 +14,5 @@ export default function StatsGrid({ stats }) {
         <div className="text-gray-600 font-medium">Has Website</div>
       </div>
     </div>
-  )
+  );
 }

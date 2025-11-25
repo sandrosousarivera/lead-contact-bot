@@ -2,9 +2,11 @@ export default function ResultsTable({ leads, onDelete }) {
   if (leads.length === 0) {
     return (
       <div className="card text-center py-16">
-        <p className="text-gray-500 text-lg italic">No leads found. Try adjusting your filters or start a new search.</p>
+        <p className="text-gray-500 text-lg italic">
+          No leads found. Try adjusting your filters or start a new search.
+        </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -14,21 +16,40 @@ export default function ResultsTable({ leads, onDelete }) {
         <table className="w-full">
           <thead>
             <tr className="bg-gray-100 border-b-2 border-gray-300">
-              <th className="px-6 py-4 text-left font-semibold text-gray-800">Business Name</th>
-              <th className="px-6 py-4 text-left font-semibold text-gray-800">Category</th>
-              <th className="px-6 py-4 text-left font-semibold text-gray-800">Phone</th>
-              <th className="px-6 py-4 text-left font-semibold text-gray-800">Address</th>
-              <th className="px-6 py-4 text-left font-semibold text-gray-800">Website</th>
-              <th className="px-6 py-4 text-left font-semibold text-gray-800">Actions</th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-800">
+                Business Name
+              </th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-800">
+                Category
+              </th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-800">
+                Phone
+              </th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-800">
+                Address
+              </th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-800">
+                Website
+              </th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-800">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
             {leads.map((lead) => (
-              <tr key={lead.id} className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-6 py-4 font-medium text-gray-900">{lead.name}</td>
+              <tr
+                key={lead.id}
+                className="border-b border-gray-200 hover:bg-gray-50"
+              >
+                <td className="px-6 py-4 font-medium text-gray-900">
+                  {lead.name}
+                </td>
                 <td className="px-6 py-4 text-gray-700">{lead.category}</td>
                 <td className="px-6 py-4 text-gray-700">{lead.phone}</td>
-                <td className="px-6 py-4 text-gray-700 text-sm">{lead.address}</td>
+                <td className="px-6 py-4 text-gray-700 text-sm">
+                  {lead.address}
+                </td>
                 <td className="px-6 py-4">
                   {lead.has_website ? (
                     <a
@@ -59,5 +80,5 @@ export default function ResultsTable({ leads, onDelete }) {
         </table>
       </div>
     </div>
-  )
+  );
 }

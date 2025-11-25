@@ -1,8 +1,17 @@
-export default function FilterSection({ filterType, setFilterType, searchTerm, setSearchTerm, onExport, onClearAll }) {
+export default function FilterSection({
+  filterType,
+  setFilterType,
+  searchTerm,
+  setSearchTerm,
+  onExport,
+  onClearAll,
+}) {
   return (
     <div className="flex flex-col md:flex-row gap-4 mb-6 items-center">
       <div className="flex-1">
-        <label className="block text-sm font-semibold text-white mb-2">Filter:</label>
+        <label className="block text-sm font-semibold text-white mb-2">
+          Filter:
+        </label>
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
@@ -31,13 +40,10 @@ export default function FilterSection({ filterType, setFilterType, searchTerm, s
         >
           📥 Export
         </button>
-        <button
-          onClick={onClearAll}
-          className="btn btn-danger"
-        >
+        <button onClick={onClearAll} className="btn btn-danger">
           🗑️ Clear
         </button>
       </div>
     </div>
-  )
+  );
 }
