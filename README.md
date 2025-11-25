@@ -2,18 +2,37 @@
 
 ## Overview
 
-Lead Contact Bot is a Python-based web scraping tool with a modern web interface designed to identify potential business leads for web development services. The program scrapes business directories such as Yellow Pages (Páginas Amarillas), and identifies businesses that either lack an online presence or have websites that could be improved. These leads are stored in a database, classified, and prepared for outreach to offer professional web building services.
+Lead Contact Bot is a Python-based web scraping tool with a modern React + Tailwind CSS interface designed to identify potential business leads for web development services. The program scrapes business directories such as Yellow Pages (Páginas Amarillas), and identifies businesses that either lack an online presence or have websites that could be improved. These leads are stored in a database, classified, and prepared for outreach to offer professional web building services.
 
 ## Features
 
 - **🔍 Web Scraping**: Extracts business data from Páginas Amarillas (paginasamarillas.es)
 - **💾 Database Storage**: Stores qualified leads in SQLite database
-- **📊 Web Dashboard**: Modern, responsive web interface for managing leads
+- **⚛️ React Frontend**: Modern, responsive web interface with React + Tailwind CSS
 - **🎯 Lead Qualification**: Automatically identifies businesses without websites
 - **📈 Real-time Progress**: Live updates during scraping process
 - **🔎 Advanced Filtering**: Filter by website status, search by name or category
 - **📥 Data Export**: Export leads to JSON format
 - **🐳 Docker Support**: Easy deployment with Docker containerization
+- **🎨 Modern UI**: Built with React and Tailwind CSS for beautiful design
+
+## Tech Stack
+
+**Frontend:**
+- React 18
+- Tailwind CSS
+- Axios
+- Vite
+
+**Backend:**
+- Flask
+- SQLite
+- Selenium
+- BeautifulSoup4
+
+**DevOps:**
+- Docker
+- Docker Compose
 
 ## Quick Start with Docker (Recommended)
 
@@ -54,35 +73,63 @@ Lead Contact Bot is a Python-based web scraping tool with a modern web interface
    docker-compose down
    ```
 
-## Manual Installation (Without Docker)
+## Development Setup (Without Docker)
 
 ### Prerequisites
-
 - Python 3.11+
+- Node.js 18+
 - Google Chrome installed
 
-### Setup
+### Backend Setup
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/sandrosousarivera/lead-contact-bot.git
    cd lead-contact-bot
    ```
 
-2. Install dependencies:
+2. Create virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
+3. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run the application:
+### Frontend Setup
 
+1. Navigate to frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Build React app:
+   ```bash
+   npm run build
+   ```
+
+### Running the Application
+
+1. In the project root, run Flask:
    ```bash
    python app.py
    ```
 
-4. Open your browser at: **http://localhost:5000**
+2. In another terminal, run React development server (optional):
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+3. Open your browser at: **http://localhost:5000**
 
 ## Usage
 
@@ -117,21 +164,31 @@ python scraper.py
 
 ```
 lead-contact-bot/
-├── app.py                  # Flask web application
-├── scraper_module.py       # Web scraping module
-├── database.py             # Database operations
-├── scraper.py             # Standalone CLI scraper
-├── requirements.txt       # Python dependencies
-├── Dockerfile             # Docker image configuration
-├── docker-compose.yml     # Docker Compose setup
-├── start.sh              # Quick start script
-├── templates/            # HTML templates
-│   └── index.html
-├── static/               # Static assets
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       └── app.js
+├── app.py                        # Flask backend with API routes
+├── scraper_module.py            # Web scraping module
+├── database.py                  # SQLite database operations
+├── scraper.py                   # Standalone CLI scraper
+├── requirements.txt             # Python dependencies
+├── Dockerfile                   # Docker image configuration
+├── docker-compose.yml           # Docker Compose setup
+├── start.sh                     # Quick start script
+├── frontend/                    # React frontend (Vite)
+│   ├── src/
+│   │   ├── main.jsx            # React entry point
+│   │   ├── App.jsx             # Main App component
+│   │   ├── index.css           # Tailwind styles
+│   │   └── components/
+│   │       ├── Header.jsx
+│   │       ├── StatsGrid.jsx
+│   │       ├── SearchForm.jsx
+│   │       ├── FilterSection.jsx
+│   │       └── ResultsTable.jsx
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   └── postcss.config.js
+├── static/                      # Compiled React build (auto-generated)
 └── README.md
 ```
 
@@ -154,12 +211,36 @@ docker-compose down
 docker-compose up -d --build
 ```
 
+## Development Commands
+
+### Backend
+```bash
+# Run Flask development server
+python app.py
+
+# Run standalone scraper
+python scraper.py
+```
+
+### Frontend
+```bash
+# Install dependencies
+npm install
+
+# Run development server with hot reload
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
 ## Technologies Used
 
-- **Backend**: Python, Flask
-- **Scraping**: Selenium, BeautifulSoup4
-- **Database**: SQLite
-- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Python, Flask, Selenium, BeautifulSoup4, SQLite
+- **Frontend**: React, Tailwind CSS, Vite, Axios
 - **Containerization**: Docker, Docker Compose
 
 ## Contributing

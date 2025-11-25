@@ -4,16 +4,17 @@ Flask Web Application for Lead Contact Bot
 Provides web interface for scraping and managing business leads
 """
 
-from flask import Flask, render_template, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import threading
 import json
 import os
+from pathlib import Path
 from datetime import datetime
 from scraper_module import PaginasAmarillasScraper
 from database import Database
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 CORS(app)
 
 # Global variables
@@ -29,9 +30,19 @@ db = Database()
 
 
 @app.route('/')
-def index():
-    """Render main dashboard"""
-    return render_template('index.html')
+@app.route('/<path:path>')
+def serve_react(path='index.html'):
+    """Serve React application"""
+    static_dir = Path(__file__).parent / 'static'
+    
+    # If requesting a specific file that exists, serve it
+    if path != 'index.html':
+        file_path = static_dir / path
+        if file_path.exists() and file_path.is_file():
+            return send_from_directory('static', path)
+    
+    # Otherwise serve index.html for React SPA routing
+    return send_from_directory('static', 'index.html')
 
 
 @app.route('/api/start-scraping', methods=['POST'])

@@ -1,7 +1,24 @@
-# Use Python 3.11 slim image
+# Build stage for React
+FROM node:18-alpine AS react-builder
+
+WORKDIR /app/frontend
+
+# Copy frontend files
+COPY frontend/package*.json ./
+RUN npm install
+
+COPY frontend/src ./src
+COPY frontend/index.html ./
+COPY frontend/vite.config.js ./
+COPY frontend/tailwind.config.js ./
+COPY frontend/postcss.config.js ./
+
+# Build React app
+RUN npm run build
+
+# Python backend stage
 FROM python:3.11-slim
 
-# Set working directory
 WORKDIR /app
 
 # Install system dependencies for Chrome and Selenium
@@ -24,6 +41,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files
 COPY . .
+
+# Copy React build from builder stage
+COPY --from=react-builder /app/frontend/dist static/
 
 # Create directories for data persistence
 RUN mkdir -p /app/exports

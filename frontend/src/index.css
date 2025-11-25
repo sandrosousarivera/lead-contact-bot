@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-green-500 text-white hover:bg-green-600;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md p-8 mb-8;
+  }
+
+  .stat-card {
+    @apply bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all;
+  }
+
+  .stat-card.highlight {
+    @apply bg-gradient-to-br from-purple-500 to-pink-500 text-white;
+  }
+}
